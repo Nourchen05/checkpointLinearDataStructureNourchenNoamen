@@ -1,0 +1,26 @@
+ALGORITHM problemOneSolutionOne
+VAR
+    i:INTEGER:=0; //compteur de sone
+    j:INTEGER:=0; //compteur de stwo
+    diff:BOOLEAN:=TRUE;
+    sum:INTEGER:=0;
+    sone: ARRAY_OF INTEGER[];
+    stwo: ARRAY_OF INTEGER[];
+
+BEGIN
+    WHILE (i<sone.length-1) DO
+        WHILE ((j<stwo.length-1)AND(diff==TRUE)) DO
+            IF (sone[i]<>stwo[j]) THEN
+                j:=j+1;
+            ELSE
+                diff:=FALSE;
+            END_IF
+        END_WHILE   
+
+        IF (diff==TRUE) THEN
+            sum:=sum+sone[i];
+        END_IF
+        i:=i+1;
+    END_WHILE
+    write("La somme des éléments differents est égale à ",sum);
+END

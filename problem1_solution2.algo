@@ -1,0 +1,26 @@
+ALGORITHM PROBLEMoneSolutionTwo
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    sum:INEGER:=0;
+    i:INTEGER; //notre compteur
+    sone :ARRAY_OF INTEGER[];
+    stwo :ARRAY_OF INTEGER[];
+
+BEGIN
+    for i FROM 0 TO sone.length-1 STEP 1 DO:
+        htab.insert(sone[i],sone[i]);  //L'idée est l inserer les élements avec les memes clés et valeurs
+    END_FOR
+    FOR i FROM 0 TO stwo.length-1 STEP 1  DO
+        IF (htab.search(stwo[i])==NULL) THEN //si l élement n'existe pas dans htab, on l ajoute
+            htab.insert(stwo[i],stwo[i]);
+        ELSE
+            htab.delete(stwo[i]); //si l element existe deja dans htab, on le supprime de htab
+        END_IF
+    END_FOR
+    FOR i FROM 0 TO htab.length-1 STEP 1  DO  //htab contient que les éléments différents
+        WHILE (htab.looky(i)==TRUE) THEN //tant que la clé existe, on l ajoute au sum puisque clé=valeur
+            sum:=sum+i;
+    END_FOR
+    write("La somme des éléments différents est égale à ",sum)
+    
+END

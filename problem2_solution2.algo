@@ -1,0 +1,21 @@
+ALGORITHM PROBLEMtwoSolutionTwo
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    sum:INEGER:=0;
+    i:INTEGER; //notre compteur
+    sone :ARRAY_OF INTEGER[];
+    stwo :ARRAY_OF INTEGER[];
+
+BEGIN
+    for i FROM 0 TO sone.length-1 STEP 1 DO:
+        htab.insert(sone[i],sone[i]);  //Inserer tous les éléments de sone dans htab
+    END_FOR
+    FOR i FROM 0 TO stwo.length-1 STEP 1  DO
+        IF (htab.search(stwo[i])<>NULL) THEN //si l element existe deja dans htab, on l'ajoute dans sum
+            sum:=sum+stwo[i];
+        END_IF
+    END_FOR
+    
+    write("La somme des éléments égaux est égale à ",sum*2);
+    
+END

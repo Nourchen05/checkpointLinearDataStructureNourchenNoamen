@@ -1,0 +1,28 @@
+ALGORITHM problemTwoSolutionOne
+VAR
+    i:INTEGER:=0;
+    j:INTEGER:=0;
+    equal:BOOLEAN:=FALSE;
+    sum:INTEGER:=0;
+    sone: ARRAY_OF INTEGER[];
+    stwo: ARRAY_OF INTEGER[];
+
+BEGIN
+    WHILE (i<sone.length-1) DO
+        WHILE ((j<stwo.length-1)AND(equal==FALSE)) DO
+            IF (sone[i]==stwo[j]) THEN
+                equal:=TRUE;
+            ELSE
+                equal:=FALSE;
+                j:=j+1;
+            END_IF
+        END_WHILE
+
+        IF (equal==TRUE) THEN
+            sum:=sum+sone[i];
+        END_IF
+        
+        i:=i+1;
+    END_WHILE
+    write("La somme des éléments égaux est égale à ",sum*2);
+END
